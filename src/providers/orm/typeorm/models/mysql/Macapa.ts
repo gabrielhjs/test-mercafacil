@@ -1,6 +1,6 @@
 import { Column, Entity } from "typeorm"
-import { Macapa } from "../../../../entities/Macapa"
-import { OrmBaseModel } from "./BaseModel"
+import { Macapa } from "../../../../../entities/Macapa"
+import { OrmBaseModel } from "../BaseModel"
 
 
 @Entity()

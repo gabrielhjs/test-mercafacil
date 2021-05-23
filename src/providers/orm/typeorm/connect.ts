@@ -1,10 +1,6 @@
-import { createConnection, getConnection } from 'typeorm'
-import dotenv from "dotenv"
+import { ConnectionOptions, createConnection, getConnection } from 'typeorm'
 
-import { databases } from "./ormconfig"
-
-
-dotenv.config()
+import databases from "./ormconfig"
 
 
 export const typeormConnection = {
@@ -12,7 +8,7 @@ export const typeormConnection = {
 		const connection = databases.find(connection => connection.name === connectionName)
 
 		if (connection !== undefined) {
-			createConnection(connection).then(() => {
+			createConnection(connection as ConnectionOptions).then(() => {
 				console.log(`Connection: (${connectionName}) is connected`)
 			})
 		}

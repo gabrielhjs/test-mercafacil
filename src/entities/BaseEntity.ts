@@ -1,3 +1,3 @@
 export class BaseEntity {
-	public id!: number
+	public id?: number
 }

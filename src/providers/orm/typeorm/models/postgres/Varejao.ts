@@ -1,8 +1,9 @@
-import { Column } from "typeorm"
-import { Varejao } from "../../../../entities/Varejao"
-import { OrmBaseModel } from "./BaseModel"
+import { Column, Entity } from "typeorm"
+import { Varejao } from "../../../../../entities/Varejao"
+import { OrmBaseModel } from "../BaseModel"
 
 
+@Entity("contacts")
 export class OrmVarejao extends OrmBaseModel implements Varejao {
 	@Column("varchar", { length: 100, nullable: false })
 	nome!: string
