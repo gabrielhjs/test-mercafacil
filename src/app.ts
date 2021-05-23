@@ -3,6 +3,8 @@ import { Request, Response } from "express"
 import compression from "compression"
 
 import { router } from "./routes"
+import { MacapaRouter } from "./routes/Macapa/MacapaRoutes"
+import { VarejaoRouter } from "./routes/Varejao/VarejaoRoutes"
 
 
 const app = express()
@@ -24,6 +26,8 @@ app.use((_, response, next) => {
 
 
 app.use("/", router)
+app.use("/macapa", MacapaRouter)
+app.use("/varejao", VarejaoRouter)
 
 
 export { app }

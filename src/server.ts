@@ -9,8 +9,8 @@ import { app } from "./app"
 dotenv.config()
 
 
-Connection.create("dev_postrgres_database")
-Connection.create("dev_mysql_database")
+Connection.create(process.env.POSTGRES_CONNECTION || "default_postgres_connection")
+Connection.create(process.env.MYSQL_CONNECTION || "default_mysql_connection")
 
 
 app.use(cors())

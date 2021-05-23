@@ -1,10 +1,10 @@
 import { Column, Entity } from "typeorm"
-import { Macapa } from "../../../../../entities/Macapa"
+import { Contact } from "../../../../../entities/Contact"
 import { OrmBaseModel } from "../BaseModel"
 
 
-@Entity()
-export class OrmMacapa extends OrmBaseModel implements Macapa {
+@Entity("contacts")
+export class OrmMacapa extends OrmBaseModel implements Contact {
 	@Column("varchar", { length: 200, nullable: false })
 	nome!: string
 
