@@ -28,7 +28,11 @@ export class JwtAuthenticationMiddleware implements IAuthenticationMiddleware {
 
 		jwt.verify(token, process.env.APP_SECRET || "defaultSecretKey", (error, data) => {
 			if (error) tokenError = error
-			else Object.assign(tokenData, JSON.parse(data.data))
+			else {
+				interface IJsonData { jsonData: string }
+				const { jsonData } = data as IJsonData
+				Object.assign(tokenData, JSON.parse(jsonData))
+			}
 		})
 
 		if (tokenError) return response.status(500).send({ error: tokenError })
