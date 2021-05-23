@@ -1,7 +1,7 @@
 import { createConnection, getConnection } from 'typeorm'
 import dotenv from "dotenv"
 
-import config from "./ormconfig"
+import { databases } from "./ormconfig"
 
 
 dotenv.config()
@@ -9,7 +9,7 @@ dotenv.config()
 
 export const typeormConnection = {
 	async create(connectionName: string) {
-		const connection = config.find(connection => connection.name === connectionName)
+		const connection = databases.find(connection => connection.name === connectionName)
 
 		if (connection !== undefined) {
 			createConnection(connection).then(() => {
