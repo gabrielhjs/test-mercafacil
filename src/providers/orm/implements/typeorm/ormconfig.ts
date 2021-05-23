@@ -12,13 +12,13 @@ export =[
 		"url": `${process.env.POSTGRES_URL}`,
 		"logging": false,
 		"entities": [
-			"src/providers/orm/typeorm/models/postgres/*.ts"
+			"src/providers/orm/implements/typeorm/models/postgres/*.ts"
 		],
 		"migrations": [
-			"src/providers/orm/typeorm/migrations/postgres/*.ts"
+			"src/providers/orm/implements/typeorm/migrations/postgres/*.ts"
 		],
 		"cli": {
-			"migrationsDir": "src/providers/orm/typeorm/migrations/postgres"
+			"migrationsDir": "src/providers/orm/implements/typeorm/migrations/postgres"
 		}
 	} as ConnectionOptions,
 	{
@@ -27,13 +27,13 @@ export =[
 		"url": `${process.env.MYSQL_URL}`,
 		"logging": false,
 		"entities": [
-			"src/providers/orm/typeorm/models/mysql/*.ts"
+			"src/providers/orm/implements/typeorm/models/mysql/*.ts"
 		],
 		"migrations": [
-			"src/providers/orm/typeorm/migrations/mysql/*.ts"
+			"src/providers/orm/implements/typeorm/migrations/mysql/*.ts"
 		],
 		"cli": {
-			"migrationsDir": "src/providers/orm/typeorm/migrations/mysql"
+			"migrationsDir": "src/providers/orm/implements/typeorm/migrations/mysql"
 		}
 	} as ConnectionOptions,
 	{
@@ -42,13 +42,13 @@ export =[
 		"url": `${process.env.POSTGRES_URL}`,
 		"logging": false,
 		"entities": [
-			"dist/providers/orm/typeorm/models/postgres/*.js"
+			"dist/providers/orm/implements/typeorm/models/postgres/*.js"
 		],
 		"migrations": [
-			"dist/providers/orm/typeorm/migrations/postgres/*.js"
+			"dist/providers/orm/implements/typeorm/migrations/postgres/*.js"
 		],
 		"cli": {
-			"migrationsDir": "dist/providers/orm/typeorm/migrations/postgres"
+			"migrationsDir": "dist/providers/orm/implements/typeorm/migrations/postgres"
 		}
 	} as ConnectionOptions,
 	{
@@ -57,13 +57,13 @@ export =[
 		"url": `${process.env.MYSQL_URL}`,
 		"logging": false,
 		"entities": [
-			"dist/providers/orm/typeorm/models/mysql/*.js"
+			"dist/providers/orm/implements/typeorm/models/mysql/*.js"
 		],
 		"migrations": [
-			"dist/providers/orm/typeorm/migrations/mysql/*.js"
+			"dist/providers/orm/implements/typeorm/migrations/mysql/*.js"
 		],
 		"cli": {
-			"migrationsDir": "dist/providers/orm/typeorm/migrations/mysql"
+			"migrationsDir": "dist/providers/orm/implements/typeorm/migrations/mysql"
 		}
 	} as ConnectionOptions
 ]

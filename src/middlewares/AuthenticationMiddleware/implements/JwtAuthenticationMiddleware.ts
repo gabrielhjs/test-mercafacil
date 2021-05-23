@@ -6,6 +6,8 @@ import { IAuthenticationMiddleware } from "../IAuthenticationmiddleware"
 
 export class JwtAuthenticationMiddleware implements IAuthenticationMiddleware {
 	async handle(request: Request, response: Response, next: NextFunction): Promise<Response | void> {
+		const tokenData = {}
+		let tokenError = undefined
 		const authorization = request.headers.authorization
 
 		if (!authorization) {
@@ -24,17 +26,14 @@ export class JwtAuthenticationMiddleware implements IAuthenticationMiddleware {
 			return response.status(401).send({ error: "Wrong token scheme" })
 		}
 
-		const tokenData = jwt.verify(token, "secret", (error, data) => {
-			if (error) {
-				return response.sendStatus(401)
-			}
-
-			else {
-				return data
-			}
+		jwt.verify(token, process.env.APP_SECRET || "defaultSecretKey", (error, data) => {
+			if (error) tokenError = error
+			else Object.assign(tokenData, JSON.parse(data.data))
 		})
 
-		request.userId = "user"
+		if (tokenError) return response.status(500).send({ error: tokenError })
+
+		request.user = tokenData as User
 
 		return next()
 	}

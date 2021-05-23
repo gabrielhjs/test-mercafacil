@@ -1,12 +1,14 @@
 import { Request, Response } from "express"
+import { Contact } from "../../../entities/Contact"
 
 import { IController } from "../../interfaces/IController"
 import { IUseCase } from "../../interfaces/IUseCase"
+import { IPostContactsVarejaoDto } from "./PostContactsVarejaoDto"
 
 
 export class PostContactsVarejaoController implements IController {
 	constructor(
-		private getModulesUseCase: IUseCase
+		private getModulesUseCase: IUseCase<IPostContactsVarejaoDto, Contact[]>
 	) { }
 	async handle(request: Request, response: Response): Promise<Response> {
 		try {
@@ -22,7 +24,7 @@ export class PostContactsVarejaoController implements IController {
 		}
 		catch (error) {
 			console.log(error.message)
-			return response.status(400).send(
+			return response.status(500).send(
 				{ error: "Unexpected error." }
 			)
 		}

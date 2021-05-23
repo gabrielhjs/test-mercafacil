@@ -1,4 +1,4 @@
-import { typeormConnection } from "./typeorm/connect"
+import { typeormConnection } from "./implements/typeorm/connect"
 
 
 const Connection = typeormConnection

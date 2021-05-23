@@ -1,4 +1,4 @@
-import { Router } from "express"
+import { response, Router } from "express"
 import { authorizationMiddleware } from "../.."
 import { postContactsMacapaController } from "./PostContactsMacapa"
 

@@ -1,5 +1,5 @@
 import { Column, Entity } from "typeorm"
-import { Contact } from "../../../../../entities/Contact"
+import { Contact } from "../../../../../../entities/Contact"
 import { OrmBaseModel } from "../BaseModel"
 
 

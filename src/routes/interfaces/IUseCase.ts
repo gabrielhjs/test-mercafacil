@@ -1,14 +1,11 @@
-import { IDto } from "./IDto"
-
-
-interface IUseCaseResponse {
-	data?: any
+interface IUseCaseResponse<IResponse> {
+	data?: IResponse
 	error: boolean | string
 }
 
 
-interface IUseCase {
-	execute(data: IDto): Promise<IUseCaseResponse>
+interface IUseCase<IDto, IResponse> {
+	execute(data: IDto): Promise<IUseCaseResponse<IResponse>>
 }
 
 

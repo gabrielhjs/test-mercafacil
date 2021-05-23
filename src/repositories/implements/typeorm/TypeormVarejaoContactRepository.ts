@@ -2,7 +2,7 @@ import dotenv from "dotenv"
 import { getRepository } from "typeorm"
 
 import { Contact } from "../../../entities/Contact"
-import { OrmVarejao } from "../../../providers/orm/typeorm/models/postgres/Varejao"
+import { OrmVarejao } from "../../../providers/orm/implements/typeorm/models/postgres/Varejao"
 import { IContactRepository } from "../../IContactRepository"
 
 

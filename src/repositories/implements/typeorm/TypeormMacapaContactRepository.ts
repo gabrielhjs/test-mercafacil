@@ -2,7 +2,7 @@ import dotenv from "dotenv"
 import { getRepository } from "typeorm"
 
 import { Contact } from "../../../entities/Contact"
-import { OrmMacapa } from "../../../providers/orm/typeorm/models/mysql/Macapa"
+import { OrmMacapa } from "../../../providers/orm/implements/typeorm/models/mysql/Macapa"
 import { IContactRepository } from "../../IContactRepository"
 
 

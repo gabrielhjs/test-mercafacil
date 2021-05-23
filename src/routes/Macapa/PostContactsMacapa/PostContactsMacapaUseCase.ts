@@ -1,13 +1,14 @@
+import { Contact } from "../../../entities/Contact"
 import { IContactRepository } from "../../../repositories/IContactRepository"
 import { IUseCase, IUseCaseResponse } from "../../interfaces/IUseCase"
 import { IPostContactsMacapaDto } from "./PostContactsMacapaDto"
 
 
-export class PostContactsMacapaUseCase implements IUseCase {
+export class PostContactsMacapaUseCase implements IUseCase<IPostContactsMacapaDto, Contact[]> {
 	constructor(
 		private contactRepository: IContactRepository
 	) { }
-	async execute(data: IPostContactsMacapaDto): Promise<IUseCaseResponse> {
+	async execute(data: IPostContactsMacapaDto): Promise<IUseCaseResponse<Contact[]>> {
 		let error: string = ""
 		const isInvalidData = data.contacts.some(function (contact) {
 			const verification = contact.cellphone.match(/\d{2}\d{2}\d{5}\d{4}/) === null

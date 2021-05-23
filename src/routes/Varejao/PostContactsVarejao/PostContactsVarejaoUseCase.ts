@@ -1,13 +1,14 @@
+import { Contact } from "../../../entities/Contact"
 import { IContactRepository } from "../../../repositories/IContactRepository"
 import { IUseCase, IUseCaseResponse } from "../../interfaces/IUseCase"
 import { IPostContactsVarejaoDto } from "./PostContactsVarejaoDto"
 
 
-export class PostContactsVarejaoUseCase implements IUseCase {
+export class PostContactsVarejaoUseCase implements IUseCase<IPostContactsVarejaoDto, Contact[]> {
 	constructor(
 		private contactRepository: IContactRepository
 	) { }
-	async execute(data: IPostContactsVarejaoDto): Promise<IUseCaseResponse> {
+	async execute(data: IPostContactsVarejaoDto): Promise<IUseCaseResponse<Contact[]>> {
 		let error: string = ""
 		const isInvalidData = data.contacts.some(function (contact) {
 			const verification = contact.cellphone.match(/^\d{13}$/) === null
