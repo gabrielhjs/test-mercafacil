@@ -32,7 +32,7 @@
 	},
 	"scripts": {
 		"start": "NODE_ENV=production node dist/server.js",
-		"build": "rimraf dist && tsc",
+		"build": "tsc",
 		"typeorm": "node --trace-warnings --require ts-node/register ./node_modules/typeorm/cli.js -f src/providers/orm/implements/typeorm/ormconfig",
 		"dev": "NODE_ENV=devlopment tsnd --respawn --transpile-only --ignore-watch node_modules --no-notify --trace-warnings -- src/server.ts"
 	}

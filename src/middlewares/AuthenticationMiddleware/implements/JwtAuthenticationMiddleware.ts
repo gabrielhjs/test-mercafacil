@@ -5,40 +5,40 @@ import { IAuthenticationMiddleware } from "../IAuthenticationmiddleware"
 
 
 export class JwtAuthenticationMiddleware implements IAuthenticationMiddleware {
-	async handle(request: Request, response: Response, next: NextFunction): Promise<Response | void> {
-		const tokenData = {}
-		let tokenError = undefined
-		const authorization = request.headers.authorization
+  async handle(request: Request, response: Response, next: NextFunction): Promise<Response | void> {
+    const tokenData = {}
+    let tokenError = undefined
+    const authorization = request.headers.authorization
 
-		if (!authorization) {
-			return response.status(401).send({ error: "No token provided" })
-		}
+    if (!authorization) {
+      return response.status(401).send({ error: "No token provided" })
+    }
 
-		const parts = authorization?.split(" ")
+    const parts = authorization?.split(" ")
 
-		if (!(parts.length === 2)) {
-			return response.status(401).send({ error: "Token error" })
-		}
+    if (!(parts.length === 2)) {
+      return response.status(401).send({ error: "Token error" })
+    }
 
-		const [scheme, token] = parts
+    const [scheme, token] = parts
 
-		if (!/^Bearer$/i.test(scheme)) {
-			return response.status(401).send({ error: "Wrong token scheme" })
-		}
+    if (!/^Bearer$/i.test(scheme)) {
+      return response.status(401).send({ error: "Wrong token scheme" })
+    }
 
-		jwt.verify(token, process.env.APP_SECRET || "defaultSecretKey", (error, data) => {
-			if (error) tokenError = error
-			else {
-				interface IJsonData { jsonData: string }
-				const { jsonData } = data as IJsonData
-				Object.assign(tokenData, JSON.parse(jsonData))
-			}
-		})
+    jwt.verify(token, process.env.APP_SECRET || "defaultSecretKey", (error, jsonData) => {
+      if (error) tokenError = error
+      else {
+        interface IJsonData { data: string }
+        const { data } = jsonData as IJsonData
+        Object.assign(tokenData, JSON.parse(data))
+      }
+    })
 
-		if (tokenError) return response.status(500).send({ error: tokenError })
+    if (tokenError) return response.status(500).send({ error: tokenError })
 
-		request.user = tokenData as User
+    request.user = tokenData as User
 
-		return next()
-	}
+    return next()
+  }
 }
