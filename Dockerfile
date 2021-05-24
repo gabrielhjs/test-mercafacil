@@ -18,4 +18,4 @@ COPY --from=build /app/dist/src dist
 
 RUN yarn install --prod
 
-CMD node dist/server.js
+CMD sleep 20 && node dist/server.js
