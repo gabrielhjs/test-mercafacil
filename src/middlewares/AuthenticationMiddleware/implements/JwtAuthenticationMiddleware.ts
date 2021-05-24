@@ -35,7 +35,7 @@ export class JwtAuthenticationMiddleware implements IAuthenticationMiddleware {
       }
     })
 
-    if (tokenError) return response.status(500).send({ error: tokenError })
+    if (tokenError) return response.status(400).send({ error: tokenError })
 
     request.user = tokenData as User
 
